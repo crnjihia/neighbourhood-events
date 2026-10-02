@@ -6,6 +6,7 @@ import syncRouter from './routes/sync';
 import eventsRouter from './routes/events';
 import rsvpRouter from './routes/rsvp';
 import devicesRouter from './routes/devices';
+import notificationsRouter from './routes/notifications';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use('/sync', syncRouter);
 app.use('/events', eventsRouter);
 app.use('/rsvp', rsvpRouter);
 app.use('/devices', devicesRouter);
+app.use('/notifications', notificationsRouter);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
