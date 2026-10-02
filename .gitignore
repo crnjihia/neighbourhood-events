@@ -1,0 +1,9 @@
+# Dependencies to ignore
+node_modules/
+.expo/
+Dist/
+android/
+ios/
+*.log
+*.sqlite
+web-build/
