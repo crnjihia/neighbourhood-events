@@ -17,4 +17,4 @@ git push origin "$TAG_NAME"
 # The APK path should be replaced with the actual artifact location.
 APK_PATH="./android-builds/preview.apk"
 
-gh release create "$TAG_NAME" --title "Mazingira App $VERSION" --notes "Automated release of the first APK build." "$APK_PATH"
+gh release create "$TAG_NAME" --title "Neighbourhood Events $VERSION" --notes "Automated release of the first APK build." "$APK_PATH"
