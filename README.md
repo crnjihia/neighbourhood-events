@@ -179,7 +179,7 @@ cd backend && npm test
 
 ## 📦 Standalone Android APK Build (EAS Build)
 
-The project includes an optimized [eas.json](file:///c:/Users/crnji/Videos/Projects/Mazingira-App/eas.json) configured to generate standalone `.apk` binaries directly:
+The project includes an optimized [`eas.json`](./eas.json) configured to generate standalone `.apk` binaries directly:
 
 ```bash
 # Install EAS CLI
@@ -242,4 +242,4 @@ Contributions are warmly welcomed! To contribute:
 
 ## 📄 License
 
-Distributed under the MIT License. See [LICENSE](file:///c:/Users/crnji/Videos/Projects/Mazingira-App/LICENSE) for more information.
+Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
