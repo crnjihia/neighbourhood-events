@@ -1,37 +1,54 @@
-import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from './storage';
+import { apiRequest } from './api';
 
-const API_URL = process.env.API_URL || '';
+export interface AuthResponse {
+  id: string;
+  name: string;
+  email: string;
+  token?: string;
+}
 
-export async function register(name: string, email: string, password: string): Promise<any> {
-  const response = await fetch(`${API_URL}/auth/register`, {
+export async function register(name: string, email: string, password: string): Promise<AuthResponse> {
+  const data = await apiRequest<AuthResponse>('/auth/register', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name, email, password }),
+    requiresAuth: false,
   });
-  if (!response.ok) {
-    throw new Error('Registration failed');
+
+  if (data.token) {
+    await SecureStore.setItemAsync('authToken', data.token);
   }
-  return response.json();
+  if (data.id) {
+    await SecureStore.setItemAsync('userId', data.id);
+  }
+  return data;
 }
 
 export async function login(email: string, password: string): Promise<string> {
-  const response = await fetch(`${API_URL}/auth/login`, {
+  const data = await apiRequest<{ token: string; id: string; name: string }>('/auth/login', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
+    requiresAuth: false,
   });
-  if (!response.ok) {
-    throw new Error('Login failed');
+
+  if (data.token) {
+    await SecureStore.setItemAsync('authToken', data.token);
   }
-  const { token } = await response.json();
-  await SecureStore.setItemAsync('authToken', token);
-  return token;
+  if (data.id) {
+    await SecureStore.setItemAsync('userId', data.id);
+  }
+  return data.token;
 }
 
 export async function logout(): Promise<void> {
   await SecureStore.deleteItemAsync('authToken');
+  await SecureStore.deleteItemAsync('userId');
 }
 
 export async function getToken(): Promise<string | null> {
-  return await SecureStore.getItemAsync('authToken');
+  try {
+    return await SecureStore.getItemAsync('authToken');
+  } catch {
+    return null;
+  }
 }

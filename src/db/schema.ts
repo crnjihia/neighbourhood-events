@@ -1,9 +1,9 @@
-import { tableSchema } from '@nozbe/watermelondb';
+import { appSchema, tableSchema } from '@nozbe/watermelondb';
 
-export const mySchema = tableSchema({
+export const mySchema = appSchema({
   version: 1,
   tables: [
-    {
+    tableSchema({
       name: 'events',
       columns: [
         { name: 'title', type: 'string' },
@@ -21,8 +21,8 @@ export const mySchema = tableSchema({
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
       ],
-    },
-    {
+    }),
+    tableSchema({
       name: 'users',
       columns: [
         { name: 'name', type: 'string' },
@@ -35,15 +35,15 @@ export const mySchema = tableSchema({
         { name: 'created_at', type: 'number' },
         { name: 'updated_at', type: 'number' },
       ],
-    },
-    {
+    }),
+    tableSchema({
       name: 'rsvps',
       columns: [
-        { name: 'event_id', type: 'string' },
-        { name: 'user_id', type: 'string' },
+        { name: 'event_id', type: 'string', isIndexed: true },
+        { name: 'user_id', type: 'string', isIndexed: true },
         { name: 'status', type: 'string' }, // going|interested|declined
         { name: 'created_at', type: 'number' },
       ],
-    },
+    }),
   ],
 });

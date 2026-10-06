@@ -1,58 +1,63 @@
+import { synchronize as wdbSynchronize, SyncConflictResolver } from '@nozbe/watermelondb/sync';
 import { database } from './database';
+import { getApiBaseUrl } from '../services/api';
+import * as SecureStore from '../services/storage';
 
 /**
- * Synchronize the local WatermelonDB database with the backend.
- *
- * 1. Pull remote changes since the last sync timestamp.
- * 2. Apply those changes to the local database.
- * 3. Collect local dirty records and push them to the server.
- * 4. Resolve conflicts (last‑write‑wins for RSVP status, server wins for event edits).
+ * Custom conflict resolver for WatermelonDB sync
+ * Server-wins for events and user profiles; last-write-wins for RSVPs
+ */
+export const conflictResolver: SyncConflictResolver = (table, local, remote, resolved) => {
+  if (table === 'rsvps') {
+    const localTime = Number(local.created_at || local.updated_at || 0);
+    const remoteTime = Number(remote.created_at || remote.updated_at || 0);
+    return localTime >= remoteTime ? local : remote;
+  }
+  // Server wins for events and other records
+  return remote;
+};
+
+/**
+ * Synchronize local WatermelonDB database with backend using official WatermelonDB sync protocol.
  */
 export async function synchronize(authToken?: string): Promise<void> {
-  try {
-    // Determine when we last pulled. For a fresh install we use 0.
-    const lastPulledAt = await database.adapter.getLocalSyncTimestamp?.() ?? 0;
+  const token = authToken || (await SecureStore.getItemAsync('authToken').catch(() => null));
+  const baseUrl = getApiBaseUrl();
 
-    // --- Pull phase --------------------------------------------------------
-    const pullResponse = await fetch(
-      `${process.env.API_URL || ''}/sync/pull?lastPulledAt=${lastPulledAt}`,
-      {
+  await wdbSynchronize({
+    database,
+    pullChanges: async ({ lastPulledAt, schemaVersion }) => {
+      const url = `${baseUrl}/sync/pull?lastPulledAt=${lastPulledAt ?? 0}&schemaVersion=${schemaVersion}`;
+      const response = await fetch(url, {
         method: 'GET',
         headers: {
-          Authorization: authToken ? `Bearer ${authToken}` : undefined,
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
-      },
-    );
+      });
 
-    if (!pullResponse.ok) {
-      throw new Error(`Pull failed with status ${pullResponse.status}`);
-    }
-    const { changes, timestamp } = await pullResponse.json();
-    // Apply remote changes. This is a placeholder – the exact operation
-    // depends on the WatermelonDB sync protocol implementation.
-    // Example: await database.batch(...prepareBatchFromChanges(changes));
+      if (!response.ok) {
+        throw new Error(`Sync pull failed with status ${response.status}`);
+      }
 
-    // --- Push phase -------------------------------------------------------
-    // Collect local changes that need to be sent to the server.
-    // WatermelonDB provides `database.getLocalChanges()` in the sync helper.
-    // Here we just illustrate the intent.
-    // const localChanges = await database.getLocalChanges();
-    // if (localChanges.length > 0) {
-    //   await fetch(`${process.env.API_URL}/sync/push`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       Authorization: authToken ? `Bearer ${authToken}` : undefined,
-    //     },
-    //     body: JSON.stringify({ changes: localChanges }),
-    //   });
-    // }
+      const { changes, timestamp } = await response.json();
+      return { changes, timestamp };
+    },
+    pushChanges: async ({ changes, lastPulledAt }) => {
+      const url = `${baseUrl}/sync/push?lastPulledAt=${lastPulledAt ?? 0}`;
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify({ changes }),
+      });
 
-    // Update the sync timestamp so next pull knows where to continue.
-    // await database.adapter.setLocalSyncTimestamp(timestamp);
-  } catch (error) {
-    console.error('Synchronization error:', error);
-    // Re‑throw to allow callers to handle retry logic.
-    throw error;
-  }
+      if (!response.ok) {
+        throw new Error(`Sync push failed with status ${response.status}`);
+      }
+    },
+    conflictResolver,
+  });
 }

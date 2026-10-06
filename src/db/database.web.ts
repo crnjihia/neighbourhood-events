@@ -1,15 +1,18 @@
 import { Database } from '@nozbe/watermelondb';
-import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite';
+import LokiJSAdapter from '@nozbe/watermelondb/adapters/lokijs';
 import { mySchema } from './schema';
 import Event from './models/Event';
 import User from './models/User';
 import RSVP from './models/RSVP';
 
 /*
-  Native database instance using SQLiteAdapter for Android and iOS.
+  Web-specific database instance using LokiJSAdapter + browser IndexedDB.
+  Completely avoids importing native SQLite / better-sqlite3 in web bundles.
 */
-const adapter = new SQLiteAdapter({
+const adapter = new LokiJSAdapter({
   schema: mySchema,
+  useWebWorker: false,
+  useIncrementalIndexedDB: true,
 });
 
 export const database = new Database({
