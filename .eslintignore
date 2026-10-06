@@ -1,0 +1,6 @@
+dist/
+web-build/
+backend/
+node_modules/
+coverage/
+.expo/
