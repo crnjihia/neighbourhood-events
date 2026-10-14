@@ -17,9 +17,15 @@
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License" />
 </p>
 
+<p align="center">
+  🌐 <b>Live Web Showcase & Interactive Demo:</b> <a href="https://crnjihia.github.io/neighbourhood-events/">https://crnjihia.github.io/neighbourhood-events/</a>
+</p>
+
 ---
 
 ## 📸 App Preview
+
+Explore the live web application and showcase directly in your browser: [**crnjihia.github.io/neighbourhood-events**](https://crnjihia.github.io/neighbourhood-events/)
 
 <p align="center">
   <img src="./docs/screenshots/preview.png" alt="Neighbourhood Events Dark Mode Preview" width="850" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);" />
@@ -35,7 +41,7 @@
 - 📍 **Hyperlocal Geolocation Discovery**: GPS-based distance calculations powered by the Haversine formula with radius filtering (`5 km`, `10 km`, `20 km`, `All`).
 - 🔔 **Targeted Push Notifications**: Device token registration with radius-based geographic fan-out and interactive category actions via the Expo Push Gateway.
 - 🔄 **Reliable Bi-Directional Sync**: WatermelonDB `synchronize()` integration querying `/sync/pull` and `/sync/push` with automatic offline mutation queuing.
-- 🌐 **Cross-Platform Compatibility**: Fully functional across Android, iOS, and Web (zero crash fallbacks, split platform adapters for storage and maps).
+- 🌐 **Cross-Platform Compatibility**: Fully functional across Android, iOS, and Web (try the [Live Web Showcase](https://crnjihia.github.io/neighbourhood-events/)).
 - 🌲 **Seeded Nairobi Initiatives**: Pre-populated with 12 real-world initiatives across Karura Forest, Michuki Park, Sarit Centre, KNBTS, Nairobi Arboretum, KNH, and Kilimani.
 
 ---
