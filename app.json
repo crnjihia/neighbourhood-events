@@ -30,8 +30,21 @@
     "plugins": [
       "expo-location",
       "expo-notifications",
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "packagingOptions": {
+              "pickFirst": [
+                "**/libc++_shared.so"
+              ]
+            }
+          }
+        }
+      ]
     ],
+    "newArchEnabled": false,
     "scheme": "neighbourhoodevents"
   }
 }

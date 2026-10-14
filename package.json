@@ -26,22 +26,23 @@
     "@expo/metro-runtime": "~4.0.1",
     "@nozbe/watermelondb": "^0.28.0",
     "@nozbe/with-observables": "^1.6.0",
-    "@react-native-async-storage/async-storage": "^2.1.2",
-    "@react-native-community/netinfo": "^12.0.1",
+    "@react-native-async-storage/async-storage": "1.23.1",
+    "@react-native-community/netinfo": "11.4.1",
     "expo": "^52.0.0",
+    "expo-build-properties": "~0.13.3",
     "expo-constants": "~17.0.7",
-    "expo-dev-client": "^5.0.0",
+    "expo-dev-client": "~5.0.20",
     "expo-linking": "~7.0.5",
-    "expo-location": "^18.0.0",
-    "expo-notifications": "^0.29.0",
-    "expo-router": "^4.0.0",
-    "expo-secure-store": "^14.0.0",
-    "expo-sqlite": "^15.0.0",
+    "expo-location": "~18.0.10",
+    "expo-notifications": "~0.29.13",
+    "expo-router": "~4.0.17",
+    "expo-secure-store": "~14.0.1",
+    "expo-sqlite": "~15.1.4",
     "expo-status-bar": "~2.0.1",
     "query-string": "^9.5.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-native": "0.76.7",
+    "react-native": "0.76.9",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-maps": "1.18.0",
     "react-native-reanimated": "~3.16.1",
@@ -55,7 +56,6 @@
     "@testing-library/react-native": "^12.8.0",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.3.12",
-    "@types/react-native": "~0.73.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "eslint": "^8.57.0",
@@ -66,5 +66,15 @@
     "prettier": "^3.3.0",
     "ts-jest": "^29.2.5",
     "typescript": "^5.3.3"
+  },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": [
+          "@nozbe/watermelondb"
+        ],
+        "listUnknownPackages": false
+      }
+    }
   }
 }
