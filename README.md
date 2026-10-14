@@ -17,10 +17,6 @@
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License" />
 </p>
 
-<p align="center">
-  🌐 <b>Live Web Showcase & Interactive Demo:</b> <a href="https://crnjihia.github.io/neighbourhood-events/">https://crnjihia.github.io/neighbourhood-events/</a>
-</p>
-
 ---
 
 ## 📸 App Preview
