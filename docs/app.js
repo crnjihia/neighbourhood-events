@@ -1,3 +1,4 @@
+/* eslint-env browser */
 /**
  * Neighbourhood Events — Interactive Showcase & Live Simulation Engine
  * Hyperlocal Volunteer Finder for Nairobi
