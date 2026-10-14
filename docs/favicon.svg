@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19" />
+      <stop offset="100%" stop-color="#151D2C" />
+    </linearGradient>
+    <linearGradient id="stemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6EE7B7" />
+      <stop offset="50%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="64" height="64" rx="16" fill="url(#bgGrad)" stroke="#1E293B" stroke-width="1.5" />
+  
+  <!-- Subtle Eco Ring -->
+  <circle cx="32" cy="32" r="24" stroke="#10B981" stroke-width="1" stroke-dasharray="2 3" opacity="0.3" />
+
+  <!-- Soil Mound / Base -->
+  <path d="M20 48C24 45 40 45 44 48C41 50 23 50 20 48Z" fill="#334155" opacity="0.8" />
+
+  <!-- Sprout Stem -->
+  <path d="M32 46C32 37 32 30 33 24" stroke="url(#stemGrad)" stroke-width="3.5" stroke-linecap="round" filter="url(#glow)" />
+
+  <!-- Left Leaf -->
+  <path d="M32.5 32C24 32 17 24 19 18C25 18 32 24 32.5 32Z" fill="url(#leafGrad)" filter="url(#glow)" />
+
+  <!-- Right Leaf -->
+  <path d="M33 25C40 23 46 16 44 11C38 12 33 19 33 25Z" fill="url(#leafGrad)" filter="url(#glow)" />
+
+  <!-- Pulse Center Glow -->
+  <circle cx="32.5" cy="28" r="2" fill="#A7F3D0" opacity="0.8" />
+</svg>

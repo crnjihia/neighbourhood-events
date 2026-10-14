@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neighbourhood Events — Hyperlocal Community Events & Volunteer Finder for Nairobi</title>
+
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Discover tree-planting drives in Karura Forest, blood donation clinics, river cleanups at Michuki Park, and neighbourhood meetups across Nairobi with offline-first WatermelonDB persistence and Obsidian dark mode.">
+  <meta name="keywords" content="Neighbourhood Events, Nairobi Volunteering, Karura Forest, Michuki Park, Blood Donation Nairobi, Tree Planting Kenya, WatermelonDB, Expo SDK 52, React Native, Offline First, Hyperlocal">
+  <meta name="author" content="crnjihia">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crnjihia.github.io/neighbourhood-events/">
+  <meta property="og:title" content="Neighbourhood Events — Hyperlocal Nairobi Volunteering">
+  <meta property="og:description" content="Discover tree-planting drives, blood clinics, river cleanups, and community meetups with offline-first SQLite persistence and GPS radius discovery.">
+  <meta property="og:image" content="screenshots/preview.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://crnjihia.github.io/neighbourhood-events/">
+  <meta name="twitter:title" content="Neighbourhood Events — Nairobi Hyperlocal Volunteer Finder">
+  <meta name="twitter:description" content="Offline-first community event discovery powered by Expo SDK 52 and WatermelonDB.">
+  <meta name="twitter:image" content="screenshots/preview.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glow & Background Grid -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="ambient-blob-1"></div>
+    <div class="ambient-blob-2"></div>
+    <div class="ambient-grid"></div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="header-nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-brand" id="navBrandLogo">
+        <img src="favicon.svg" alt="Neighbourhood Events Sprout Icon" class="nav-brand-logo">
+        <span>Neighbourhood Events</span>
+        <span class="brand-badge">Nairobi</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#simulator" class="nav-link">Live Simulator</a></li>
+          <li><a href="#preview" class="nav-link">App Preview</a></li>
+          <li><a href="#architecture" class="nav-link">Architecture</a></li>
+          <li><a href="#quickstart" class="nav-link">Quick Start</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="themeToggleBtn" class="theme-toggle-btn" title="Toggle Light / Dark Mode" aria-label="Toggle theme">
+          ☀️
+        </button>
+        <a href="https://github.com/crnjihia/neighbourhood-events" class="btn-github" target="_blank" rel="noopener noreferrer">
+          <svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-pill">
+          <span class="pulse-dot"></span>
+          <span>Expo SDK 52 • WatermelonDB Offline-First • Nairobi Hyperlocal</span>
+        </div>
+
+        <h1 class="hero-title">
+          Empowering Grassroots Action Across <span class="gradient-text">Nairobi's Neighbourhoods</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Discover tree-planting drives in Karura Forest, urgent blood donation camps, river cleanup sweeps, and neighbourhood eco-meetups. Designed to work flawlessly offline with SQLite sync, GPS radius discovery, and Obsidian dark mode.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#simulator" class="btn-primary" id="btnTrySimulator">
+            <span>⚡ Launch Live Simulator</span>
+          </a>
+          <a href="https://github.com/crnjihia/neighbourhood-events" class="btn-secondary" target="_blank" rel="noopener noreferrer">
+            <span>📦 View on GitHub</span>
+          </a>
+        </div>
+
+        <!-- Shields & Tech Badges Ribbon -->
+        <div class="hero-badges-ribbon">
+          <img src="https://img.shields.io/badge/Expo-SDK%2052-000020?style=flat-square&logo=expo" alt="Expo SDK 52" />
+          <img src="https://img.shields.io/badge/React%20Native-0.76-61DAFB?style=flat-square&logo=react" alt="React Native 0.76" />
+          <img src="https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat-square&logo=typescript" alt="TypeScript Strict" />
+          <img src="https://img.shields.io/badge/WatermelonDB-SQLite%20Offline-FF6B6B?style=flat-square" alt="WatermelonDB Offline-First" />
+          <img src="https://img.shields.io/badge/PostgreSQL-Prisma%20ORM-4169E1?style=flat-square&logo=postgresql" alt="PostgreSQL Prisma" />
+          <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="MIT License" />
+        </div>
+
+        <!-- HUD Metric Cards -->
+        <div class="hud-metrics-grid">
+          <div class="hud-card">
+            <div class="hud-icon">⚡</div>
+            <div class="hud-value">0 ms</div>
+            <div class="hud-label">Offline Access</div>
+            <div class="hud-sub">WatermelonDB local SQLite source of truth</div>
+          </div>
+
+          <div class="hud-card">
+            <div class="hud-icon">📍</div>
+            <div class="hud-value">5 - 20 km</div>
+            <div class="hud-label">GPS Radius Filter</div>
+            <div class="hud-sub">Haversine formula hyperlocal sorting</div>
+          </div>
+
+          <div class="hud-card">
+            <div class="hud-icon">🌙</div>
+            <div class="hud-value">#0B0F19</div>
+            <div class="hud-label">Obsidian Theme</div>
+            <div class="hud-sub">High-contrast battery-saving dark mode</div>
+          </div>
+
+          <div class="hud-card">
+            <div class="hud-icon">🔔</div>
+            <div class="hud-value">Radius Fanout</div>
+            <div class="hud-label">Expo Notifications</div>
+            <div class="hud-sub">Geographic token targeting & interactive RSVP</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive App Simulator Section -->
+    <section class="simulator-section" id="simulator">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Interactive Preview</span>
+          <h2 class="section-title">Live Hyperlocal Nairobi Explorer</h2>
+          <p class="section-desc">
+            Interact with the reactive feed below. Filter by distance, select your Nairobi anchor location, toggle simulated offline mode, and test instant RSVP state changes.
+          </p>
+        </div>
+
+        <div class="simulator-layout">
+          <!-- Main Simulated Screen (Matches Native Obsidian UI) -->
+          <div class="simulator-frame">
+            <div class="sim-app-header">
+              <div class="sim-brand-row">
+                <div class="sim-brand-title">
+                  <span class="sim-logo-icon">🌱</span>
+                  <div>
+                    Neighbourhood Events
+                    <span class="app-subtitle">Hyperlocal volunteering in Nairobi</span>
+                  </div>
+                </div>
+
+                <div class="sim-status-controls">
+                  <span id="simConnectionPill" class="sim-status-pill online">
+                    <span class="status-dot"></span> Online (Sync Ready)
+                  </span>
+                </div>
+              </div>
+
+              <!-- Search Bar -->
+              <div class="sim-search-bar">
+                <span class="sim-search-icon">🔍</span>
+                <input 
+                  type="text" 
+                  id="simSearchInput" 
+                  class="sim-search-input" 
+                  placeholder="Search events, tree drives, cleanups..." 
+                  aria-label="Search events"
+                />
+              </div>
+
+              <!-- Radius Filter Pills -->
+              <div class="sim-radius-row">
+                <span class="sim-row-label">Radius:</span>
+                <button class="radius-btn" data-radius="5" id="radius5km">5km</button>
+                <button class="radius-btn active" data-radius="10" id="radius10km">10km</button>
+                <button class="radius-btn" data-radius="20" id="radius20km">20km</button>
+                <button class="radius-btn" data-radius="all" id="radiusAll">All</button>
+              </div>
+
+              <!-- Category Filter Chips -->
+              <div class="sim-category-row">
+                <button class="category-chip active" data-cat="tree_planting">🌱 tree planting</button>
+                <button class="category-chip active" data-cat="cleanup">🧹 cleanup</button>
+                <button class="category-chip active" data-cat="blood_donation">🩸 blood donation</button>
+                <button class="category-chip active" data-cat="meetup">🤝 meetup</button>
+              </div>
+            </div>
+
+            <!-- Feed Count Bar -->
+            <div class="sim-events-header">
+              <span id="simEventsCount">Loading events...</span>
+              <span>Sorted by nearest location</span>
+            </div>
+
+            <!-- Scrollable Events List -->
+            <div class="sim-events-list" id="simEventsList">
+              <!-- Dynamically populated via docs/app.js -->
+            </div>
+          </div>
+
+          <!-- Controls Sidebar -->
+          <div class="sim-control-panel">
+            <!-- Simulated User Location Picker -->
+            <div class="panel-card">
+              <h3 class="panel-title">
+                <span class="panel-title-icon">📍</span>
+                Your Nairobi Location
+              </h3>
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.75rem;">
+                Select an anchor location to see distances recalculate via Haversine:
+              </p>
+
+              <div class="location-picker-group">
+                <label class="location-radio-item active">
+                  <input type="radio" name="simLocation" value="cbd" checked />
+                  <div class="location-text">
+                    <div class="location-name">Nairobi CBD</div>
+                    <div class="location-coords">Kencom Plaza (-1.2854, 36.8238)</div>
+                  </div>
+                </label>
+
+                <label class="location-radio-item">
+                  <input type="radio" name="simLocation" value="westlands" />
+                  <div class="location-text">
+                    <div class="location-name">Westlands</div>
+                    <div class="location-coords">Sarit Centre (-1.2608, 36.8037)</div>
+                  </div>
+                </label>
+
+                <label class="location-radio-item">
+                  <input type="radio" name="simLocation" value="kilimani" />
+                  <div class="location-text">
+                    <div class="location-name">Kilimani</div>
+                    <div class="location-coords">Yaya Centre (-1.2941, 36.7877)</div>
+                  </div>
+                </label>
+
+                <label class="location-radio-item">
+                  <input type="radio" name="simLocation" value="upperhill" />
+                  <div class="location-text">
+                    <div class="location-name">Upper Hill</div>
+                    <div class="location-coords">KNH Zone (-1.3006, 36.8072)</div>
+                  </div>
+                </label>
+
+                <label class="location-radio-item">
+                  <input type="radio" name="simLocation" value="karen" />
+                  <div class="location-text">
+                    <div class="location-name">Karen</div>
+                    <div class="location-coords">The Hub (-1.3197, 36.7067)</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Offline Simulation & Sync Controls -->
+            <div class="panel-card">
+              <h3 class="panel-title">
+                <span class="panel-title-icon">📶</span>
+                Network & Sync Engine
+              </h3>
+
+              <div class="switch-row" style="margin-bottom:0.75rem;">
+                <span class="switch-label">Online Network</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="simOnlineToggle" checked />
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="sync-console" id="simSyncConsole">
+                <!-- Sync messages logged here -->
+              </div>
+
+              <button class="sync-btn" id="simForceSyncBtn">
+                🔄 Force WatermelonDB Sync
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Preview Section -->
+    <section class="preview-showcase-section" id="preview">
+      <div class="container preview-container">
+        <div class="section-head">
+          <span class="section-tag">Native App Preview</span>
+          <h2 class="section-title">Crafted for Nairobi’s Eco-Champions</h2>
+          <p class="section-desc">
+            Explore screen running in Obsidian Dark Mode with real seed events, search, category chips, and radius filters.
+          </p>
+        </div>
+
+        <div class="preview-image-wrapper">
+          <img src="screenshots/preview.png" alt="Neighbourhood Events Dark Mode Screen Preview" loading="lazy">
+        </div>
+
+        <p class="preview-caption">
+          <i>Figure: Native Expo Router UI with Obsidian Dark palette (<code>#0B0F19</code>), real-time distance pills, and attendee status.</i>
+        </p>
+      </div>
+    </section>
+
+    <!-- Architecture & Protocol Section -->
+    <section class="architecture-section" id="architecture">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">System Architecture</span>
+          <h2 class="section-title">Offline-First Synchronization Engine</h2>
+          <p class="section-desc">
+            Designed to bridge offline mobile clients with a scalable cloud backend via bi-directional changeset synchronisation.
+          </p>
+        </div>
+
+        <div class="arch-grid">
+          <div class="arch-card">
+            <span class="arch-card-badge">Client Layer</span>
+            <h3 class="arch-card-title">WatermelonDB Core</h3>
+            <ul class="arch-card-list">
+              <li>SQLite storage adapter on Android & iOS</li>
+              <li>LokiJS IndexedDB adapter for Web fallback</li>
+              <li>Lazy model evaluation for ultra-smooth 60fps</li>
+              <li>Observable queries updating UI automatically</li>
+            </ul>
+          </div>
+
+          <div class="arch-card">
+            <span class="arch-card-badge">Sync Protocol</span>
+            <h3 class="arch-card-title">Bi-Directional Engine</h3>
+            <ul class="arch-card-list">
+              <li><code>/sync/pull</code> queries modified records since timestamp</li>
+              <li><code>/sync/push</code> uploads queued local mutations</li>
+              <li>Conflict resolution preferring server authoritativeness</li>
+              <li>Automatic retry queue when re-entering cellular coverage</li>
+            </ul>
+          </div>
+
+          <div class="arch-card">
+            <span class="arch-card-badge">Backend Layer</span>
+            <h3 class="arch-card-title">Express + Prisma</h3>
+            <ul class="arch-card-list">
+              <li>PostgreSQL 16 relational database persistence</li>
+              <li>Prisma ORM for strict schema & migrations</li>
+              <li>Expo Push Gateway fan-out service</li>
+              <li>Full Docker Compose local dev stack</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Protocol Inspector Box -->
+        <div class="protocol-box">
+          <div class="protocol-header">
+            <div class="protocol-tabs">
+              <button class="protocol-tab-btn active" data-protocol="pull">GET /sync/pull</button>
+              <button class="protocol-tab-btn" data-protocol="push">POST /sync/push</button>
+              <button class="protocol-tab-btn" data-protocol="push_notifications">Expo Notification</button>
+            </div>
+            <span style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono);">JSON Payload Spec</span>
+          </div>
+
+          <pre class="protocol-code"><code id="protocolCodeBlock">// GET /sync/pull?lastPulledAt=1697280000000
+// Express Backend -> WatermelonDB Client
+{
+  "changes": {
+    "events": {
+      "created": [
+        {
+          "id": "evt_karura_99",
+          "title": "Karura Indigenous Tree Planting",
+          "category": "tree_planting",
+          "latitude": -1.2405,
+          "longitude": 36.8344,
+          "address": "Sigiria Gate, Limuru Rd",
+          "capacity": 120,
+          "rsvpCount": 69,
+          "startsAt": 1697878800000
+        }
+      ],
+      "updated": [],
+      "deleted": []
+    },
+    "rsvps": {
+      "created": [{ "id": "rsvp_usr_01", "eventId": "evt_karura_99", "status": "confirmed" }],
+      "updated": [],
+      "deleted": []
+    }
+  },
+  "timestamp": 1697281452000
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Start Guide -->
+    <section class="quickstart-section" id="quickstart">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Developer Setup</span>
+          <h2 class="section-title">Get Started in 3 Steps</h2>
+          <p class="section-desc">
+            Run both client and backend locally using Node.js and Docker Compose.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Start PostgreSQL Database</h3>
+            <p class="step-desc">Launch the containerized Postgres database using Docker Compose from repository root.</p>
+            <pre class="step-code-snippet"><code>docker-compose up -d postgres</code></pre>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Run Backend API</h3>
+            <p class="step-desc">Push Prisma database schema and start the Express sync server on port 4000.</p>
+            <pre class="step-code-snippet"><code>cd backend
+npm install
+npx prisma db push
+npm run dev</code></pre>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Launch Expo Client</h3>
+            <p class="step-desc">Install mobile frontend dependencies and launch the Expo development server.</p>
+            <pre class="step-code-snippet"><code>npm install
+npm start
+# Press 'w' for web or 'a' for Android</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="favicon.svg" alt="Neighbourhood Events Logo" width="28" height="28">
+            <span>Neighbourhood Events</span>
+          </div>
+          <p class="footer-desc">
+            Hyperlocal community events and volunteer finder for Nairobi, Kenya. Empowering tree planting, river cleanups, blood drives, and neighbourhood meetups with offline-first technology.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <div>
+            <div class="footer-col-title">Navigation</div>
+            <ul class="footer-links">
+              <li><a href="#simulator" class="footer-link">Live Simulator</a></li>
+              <li><a href="#preview" class="footer-link">App Preview</a></li>
+              <li><a href="#architecture" class="footer-link">Architecture</a></li>
+              <li><a href="#quickstart" class="footer-link">Quick Start</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Repository</div>
+            <ul class="footer-links">
+              <li><a href="https://github.com/crnjihia/neighbourhood-events" class="footer-link" target="_blank" rel="noopener noreferrer">Source Code</a></li>
+              <li><a href="https://github.com/crnjihia/neighbourhood-events/issues" class="footer-link" target="_blank" rel="noopener noreferrer">Issue Tracker</a></li>
+              <li><a href="https://github.com/crnjihia/neighbourhood-events/blob/main/LICENSE" class="footer-link" target="_blank" rel="noopener noreferrer">MIT License</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Neighbourhood Events. Built with Expo SDK 52 & WatermelonDB for Nairobi, Kenya.</div>
+        <div>Maintained by <a href="https://github.com/crnjihia" style="color:var(--primary); text-decoration:none;" target="_blank" rel="noopener noreferrer">@crnjihia</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>

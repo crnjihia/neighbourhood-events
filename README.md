@@ -13,6 +13,7 @@
   <img src="https://img.shields.io/badge/Node.js-Express%20Sync-339933?style=flat-square&logo=node.js" alt="Node.js" />
   <img src="https://img.shields.io/badge/PostgreSQL-Prisma%20ORM-4169E1?style=flat-square&logo=postgresql" alt="PostgreSQL" />
   <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20Web-brightgreen?style=flat-square" alt="Platforms" />
+  <a href="https://crnjihia.github.io/neighbourhood-events/"><img src="https://img.shields.io/badge/Live%20Showcase-GitHub%20Pages-22c55e.svg?style=flat-square&logo=githubpages&logoColor=white" alt="Live Showcase" /></a>
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License" />
 </p>
 
