@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: npm
       - name: Setup Expo and EAS
         uses: expo/expo-github-action@v8
@@ -25,6 +25,10 @@ jobs:
           packager: npm
       - name: Install dependencies
         run: npm ci
+      - name: Initialize EAS project
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: eas init --account crnjihia --non-interactive
       - name: Build preview APK
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
